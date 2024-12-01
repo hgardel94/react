@@ -21,8 +21,6 @@ function App() {
   <li key={fighters.name}>{fighters.name}</li>
 
   </ul>
-  
-  console.log(fighters);
 
 
 };
