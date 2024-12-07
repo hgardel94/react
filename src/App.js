@@ -1,30 +1,25 @@
-import logo from './logo.svg';
+
+import { useState } from 'react';
+
 import './App.css';
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import FighterList from './components/FighterList'
+import FighterDetails from './components/FighterDetails'
 
 
 function App() {
-  const [fighters, setFighters] = useState([]);
- 
-  React.useEffect(() => {
-    axios.get('https://api.octagon-api.com/fighters').then((response) => {
-      setFighters(response.data);
-    });
-
-  }, []);
-  {Object.values(data).map(fighter => fighter.name)};
-  console.log(fighters);
-  <ul>
-  
-   
-  <li key={fighters.name}>{fighters.name}</li>
-
-  </ul>
-  
-  console.log(fighters);
+    const [fighterSelected, setFighterSelected] = useState(null)
 
 
-};
+    console.log("El luchador seleccionado es: ",fighterSelected)
+    return <div>
+        {fighterSelected!==null?
+        < FighterDetails details={fighterSelected} onSelect={()=>setFighterSelected(null)}/> :
+        <FighterList onSelect={setFighterSelected} />
+        }
+</div>
+}
+
+
+
 
 export default App;
